@@ -7,8 +7,6 @@
   ],
   "client": [
     "RenderArmorMixin",
-    "RenderGuiMixin",
-    "KeyBindMixin",
     "ElytraFeatureRendererMixin",
     "HeadFeatureRendererMixin"
   ],

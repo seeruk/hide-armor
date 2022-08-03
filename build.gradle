@@ -7,7 +7,7 @@ sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = "HideArmor"
-version = "Fabric-1.19"
+version = "Fabric-1.19.1"
 group ="furgl.hideArmor"
 
 repositories {
@@ -28,12 +28,12 @@ dependencies {
     //Fabric api
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     
-    modImplementation "com.terraformersmc:modmenu:4.0.0"
-    include "com.terraformersmc:modmenu:3.0.0"
-    modApi("me.shedaniel.cloth:cloth-config-fabric:7.0.72") {
+    modImplementation "com.terraformersmc:modmenu:4.0.5"
+    include "com.terraformersmc:modmenu:4.0.5"
+    modApi("me.shedaniel.cloth:cloth-config-fabric:8.0.75") {
         exclude(group: "net.fabricmc.fabric-api")
     }
-    include("me.shedaniel.cloth:cloth-config-fabric:7.0.72") {
+    include("me.shedaniel.cloth:cloth-config-fabric:8.0.75") {
         exclude(group: "net.fabricmc.fabric-api")
     }
 

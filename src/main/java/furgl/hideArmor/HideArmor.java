@@ -1,8 +1,6 @@
 package furgl.hideArmor;
 
-import furgl.hideArmor.command.ReloadCommand;
 import furgl.hideArmor.config.Config;
-import furgl.hideArmor.keybind.KeyBindOpenGui;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
@@ -21,8 +19,6 @@ public class HideArmor implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		Config.init();
-		KeyBindOpenGui.init();
-		ReloadCommand.init();
 	}
 
 	/**Should this armor be hidden*/

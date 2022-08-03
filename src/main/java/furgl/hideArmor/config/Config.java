@@ -30,16 +30,12 @@ public class Config {
 
 	public static HashMap<EquipmentSlot, Boolean> hideYourArmor = Maps.newHashMap();
 	public static HashMap<EquipmentSlot, Boolean> hideOtherPlayerArmor = Maps.newHashMap();
-	public static boolean expandedGui;
-	public static boolean showGuiButton = true;
-	public static int guiButtonXOffset;
-	public static int guiButtonYOffset;
 
 	static {
 		// defaults
 		for (EquipmentSlot slot : Utils.ARMOR_SLOTS) {
-			hideYourArmor.put(slot, false);
-			hideOtherPlayerArmor.put(slot, false);
+			hideYourArmor.put(slot, true);
+			hideOtherPlayerArmor.put(slot, true);
 		}
 	}
 
@@ -61,19 +57,9 @@ public class Config {
 
 	private static void readFromFile() {
 		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-			JsonObject parser = (JsonObject) JsonHelper.deserialize(reader);
+			JsonObject parser = JsonHelper.deserialize(reader);
 			
-			JsonElement element = parser.get("Show gui button");
-			showGuiButton = element.getAsBoolean();
-			
-			element = parser.get("Gui button X offset");
-			guiButtonXOffset = element.getAsInt();
-			
-			element = parser.get("Gui button Y offset");
-			guiButtonYOffset = element.getAsInt();
-			
-			element = parser.get("Gui opened");
-			expandedGui = element.getAsBoolean();
+			JsonElement element = null;
 
 			for (EquipmentSlot slot : Utils.ARMOR_SLOTS) {
 				element = parser.get("Hide your armor in slot: "+slot);
@@ -93,10 +79,6 @@ public class Config {
 	public static void writeToFile() {
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
 			JsonObject obj = new JsonObject();
-			obj.addProperty("Show gui button", showGuiButton);
-			obj.addProperty("Gui button X offset", guiButtonXOffset);
-			obj.addProperty("Gui button Y offset", guiButtonYOffset);
-			obj.addProperty("Gui opened", expandedGui);
 			for (EquipmentSlot slot : Utils.ARMOR_SLOTS) {
 				obj.addProperty("Hide your armor in slot: "+slot, hideYourArmor.get(slot));
 				obj.addProperty("Hide other players armor in slot: "+slot, hideOtherPlayerArmor.get(slot));
